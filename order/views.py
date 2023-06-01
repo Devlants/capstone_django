@@ -5,6 +5,9 @@ import json
 from .models import Order, Option, Temperature, Size
 from menu.models import Menu
 
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
 def OrderCreateView(request):
     if request.method == "POST":
         context = json.loads(request.body)
