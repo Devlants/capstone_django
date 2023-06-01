@@ -87,7 +87,7 @@ DATABASES = {
         'USER': 'admin',
         'PASSWORD': 'devlant123',
         'HOST': 'capstone.c3dwvkcntvtf.ap-northeast-2.rds.amazonaws.com',
-        'PORT': '3306',
+        'PORT': '3308',
     }
 }
 
