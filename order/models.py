@@ -15,7 +15,7 @@ class Size(models.Model):
 class Option(models.Model):
     quantity = models.IntegerField()
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
-    menu = models.ManyToManyField(Menu,related_name="option")
+    menu = models.ForeignKey(Menu,on_delete=models.CASCADE)
     temperature = models.ForeignKey(Temperature,on_delete=models.CASCADE)
     size = models.ForeignKey(Size,on_delete=models.CASCADE)
 
