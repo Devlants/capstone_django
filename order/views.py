@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 
 from .models import Order, Option, Temperature, Size
 from menu.models import Menu
-from .serializers import TemperatureSerializes
+from .serializers import TemperatureSerializer, SizeSerializer
 from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
@@ -36,6 +36,13 @@ def OrderCreateView(request):
 class temperatureList(APIView):
     def get(self,request):
         temperatures = Temperature.objects.all()
-        serializer = TemperatureSerializes(temperatures,many=True)
+        serializer = TemperatureSerializer(temperatures,many=True)
+
+        return Response(serializer.data)
+
+class SizeList(APIView):
+    def get(self,request):
+        sizes = Size.objects.all()
+        serializer = SizeSerializer(sizes,many=True)
 
         return Response(serializer.data)
