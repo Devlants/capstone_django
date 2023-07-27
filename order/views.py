@@ -1,6 +1,9 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 import json
+from rest_framework.response import Response
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Order, Option, Temperature, Size
 from menu.models import Menu
@@ -30,9 +33,9 @@ def OrderCreateView(request):
 
         return JsonResponse({"order_num":order.id})
 
-def temperatureList(request):
-    temperatures = Temperature.objects.all()
-    context = {
-        "temperatures" : TemperatureSerializes(temperatures,many=True)
-    }
-    return JsonResponse(context)
+class temperatureList(APIView):
+    def get(self):
+        temperatures = Temperature.objects.all()
+        serializer = TemperatureSerializes(temperatures,many=True)
+
+        return Response(serializer.data)

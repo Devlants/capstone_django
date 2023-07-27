@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89c91033-5b24-40b8-b075-8d1a52567e79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/order/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
