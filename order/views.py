@@ -4,7 +4,7 @@ import json
 
 from .models import Order, Option, Temperature, Size
 from menu.models import Menu
-
+from .serializers import TemperatureSerializes
 from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
@@ -29,3 +29,10 @@ def OrderCreateView(request):
         order.save()
 
         return JsonResponse({"order_num":order.id})
+
+def temperatureList(request):
+    temperatures = Temperature.objects.all()
+    context = {
+        "temperatures" : TemperatureSerializes(temperatures,many=True)
+    }
+    return JsonResponse(context)

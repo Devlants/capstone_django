@@ -8,3 +8,4 @@ urlpatterns = [
     path("menu/",include("menu.urls")),
     path("order/",include("order.urls")),
 ]
+

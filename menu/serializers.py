@@ -13,3 +13,5 @@ class MenuCateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category1
         fields = ["name","menues"]
+
+
