@@ -34,7 +34,7 @@ def OrderCreateView(request):
         return JsonResponse({"order_num":order.id})
 
 class temperatureList(APIView):
-    def get(self):
+    def get(self,request):
         temperatures = Temperature.objects.all()
         serializer = TemperatureSerializes(temperatures,many=True)
 
