@@ -74,13 +74,7 @@ def OrderCreateView(request):
         options = order.option_set.all()
         options = OptionSerializer(options,many = True)
         if access_token:
-            data = {
-                "brand" : "OKDK",
-                "options" : options.data
-            }
 
-
-            response = requests.post(api+"order/",json = data,headers=header)
             data = {
                 "brand" : "OKDK",
                 "point" : order.totalPrice * 0.1,
