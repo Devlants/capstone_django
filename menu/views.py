@@ -1,9 +1,8 @@
 from django.shortcuts import render
-
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
-from .serializers import MenuEasySerializer, MenuCateSerializer
-
+from .serializers import MenuEasySerializer, MenuCateSerializer, MenuIDSerializer
+from rest_framework.response import Response
 from .models import Menu
 from category.models import Category1, Category2
 
@@ -28,4 +27,8 @@ class MenuEasyListView(ListAPIView):
         category = Category2.objects.get(id = self.kwargs["id"])
         return Menu.objects.filter(category_2 = category)
 
+class MenuAPIView(APIView):
+    def get(self,request):
+        data = MenuIDSerializer(Menu.objects.all(),many = True).data
+        return Response(data)
 

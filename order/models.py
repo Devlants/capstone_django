@@ -5,6 +5,10 @@ from menu.models import Menu
 class Order(models.Model):
     totalPrice = models.IntegerField()
     is_pack = models.CharField(max_length=10)
+    card_com = models.CharField(max_length=100,null = True)
+    card_num = models.CharField(max_length=100,null = True)
+    user = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class Temperature(models.Model):
     name = models.CharField(max_length=100)
