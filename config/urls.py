@@ -7,5 +7,7 @@ urlpatterns = [
     path("",include("category.urls")),
     path("menu/",include("menu.urls")),
     path("order/",include("order.urls")),
+    path("OKDK/",include("OKDK.urls")),
+
 ]
 
