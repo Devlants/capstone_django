@@ -1,6 +1,16 @@
 from rest_framework import serializers
 from .models import Temperature, Size, Option, Order
+from menu.models import Menu
 from django.conf import settings
+
+class MenuSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+    class Meta:
+        model = Menu
+        fields = ["name","image","price"]
+
+    def get_image(self,obj):
+        return obj.image.url
 
 class OrderSerializer(serializers.ModelSerializer):
     options = serializers.SerializerMethodField()
@@ -28,13 +38,12 @@ class SizeSerializer(serializers.ModelSerializer):
         fields = ["id","name"]
 
 class OptionSerializer(serializers.ModelSerializer):
-    menu_name = serializers.CharField(source = "menu.name")
-    menu_image = serializers.SerializerMethodField()
+    menu = serializers.SerializerMethodField()
     temperature = serializers.CharField(source = "temperature.name")
     size = serializers.CharField(source = "size.name")
     class Meta:
         model = Option
-        fields = ["menu_image", "menu_name", "temperature","size"]
+        fields = ["menu", "temperature","size","quantity"]
 
-    def get_menu_image(self,instance):
-        return str(instance.menu.image.url)
+    def get_menu(self,obj):
+        return MenuSerializer(obj.menu).data
