@@ -35,7 +35,7 @@ class MenuAPIView(APIView):
         return Response(data)
 
 
-class FavoriteMenu(APIView):
+class FavoriteMenuList(APIView):
     def get(self,request):
         if request.method == "POST":
             access_token = request.META.get('HTTP_AUTHORIZATION')
