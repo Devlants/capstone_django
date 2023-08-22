@@ -133,19 +133,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SIGNAL = False
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
-
-# JWT 설정
-from datetime import timedelta
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Access 토큰 유효 기간 설정 (예: 1시간)
-    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),  # Refresh 토큰 갱신 기간 설정 (예: 1일)
-    'SLIDING_TOKEN_REFRESH_LIFETIME_GRACE_PERIOD': timedelta(days=1),  # Refresh 토큰 갱신 기간 유예 기간 설정
-    'SLIDING_TOKEN_REFRESH_MAX_LIFETIME': timedelta(days=7),  # Refresh 토큰 최대 유효 기간 설정 (예: 7일)
-}
