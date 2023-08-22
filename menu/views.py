@@ -1,11 +1,13 @@
-from django.shortcuts import render
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
 from .serializers import MenuEasySerializer, MenuCateSerializer, MenuIDSerializer
 from rest_framework.response import Response
+from django.conf import settings
+
+import requests
+
 from .models import Menu
 from category.models import Category1, Category2
-
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
@@ -32,3 +34,17 @@ class MenuAPIView(APIView):
         data = MenuIDSerializer(Menu.objects.all(),many = True).data
         return Response(data)
 
+
+class FavoriteMenu(APIView):
+    def get(self,request):
+        if request.method == "POST":
+            access_token = request.META.get('HTTP_AUTHORIZATION')
+            if access_token:
+                api = getattr(settings,"APP_HOST")
+                header = {
+                    "Authorization" : access_token
+                }
+                favorites = requests.get(api+"order/favorite/",headers=header).json()["username"]
+                return Response(favorites)
+        else:
+            return Response(status = 401, data = {"message" : "accessToken 없음"})
