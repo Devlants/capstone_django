@@ -12,7 +12,7 @@ class SignalAPIView(APIView):
 
     def post(self,request):
         print(request.data["signal"][0])
-        if request.data["signal"] == 1:
+        if request.data["signal"][0] == 1:
             settings.SIGNAL = True
         else:
             settings.SIGNAL = False
