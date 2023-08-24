@@ -11,7 +11,7 @@ class SignalAPIView(APIView):
         return Response(getattr(settings,"SIGNAL"))
 
     def post(self,request):
-        print(request.data["signal"][0])
+        print(type(request.data["signal"][0]))
         if request.data["signal"][0] == 1:
             settings.SIGNAL = True
         else:
