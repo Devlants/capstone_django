@@ -7,16 +7,17 @@ from rest_framework.response import Response
 
 @permission_classes((AllowAny,))
 class SignalAPIView(APIView):
+    SIGNAL = False
     def get(self,request):
-        print(settings.SIGNAL)
-        return Response(settings.SIGNAL)
+        print(self.SIGNAL)
+        return Response(self.SIGNAL)
 
     def post(self,request):
         if request.data["signal"][0] == "1":
-            settings.SIGNAL = True
+            self.SIGNAL = True
         else:
-            settings.SIGNAL = False
-        print(settings.SIGNAL)
+            self.SIGNAL = False
+        print(self.SIGNAL)
         return Response(status=200)
 
 
