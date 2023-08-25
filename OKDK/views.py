@@ -8,10 +8,10 @@ from rest_framework.response import Response
 @permission_classes((AllowAny,))
 class SignalAPIView(APIView):
     def get(self,request):
+        print(settings.SIGNAL)
         return Response(settings.SIGNAL)
 
     def post(self,request):
-        print(type(request.data["signal"][0]))
         if request.data["signal"][0] == "1":
             settings.SIGNAL = True
         else:
