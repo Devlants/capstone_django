@@ -5,19 +5,25 @@ from rest_framework.views import APIView
 from django.conf import settings
 from rest_framework.response import Response
 
+from .models import Signal
+
 @permission_classes((AllowAny,))
 class SignalAPIView(APIView):
     SIGNAL = False
     def get(self,request):
-        print(self.SIGNAL)
-        return Response(self.SIGNAL)
+        SIGNAL = Signal.objects.get(id = "1")
+        print(SIGNAL.status)
+        return Response(SIGNAL.status)
 
     def post(self,request):
+        SIGNAL = Signal.objects.get(id = "1")
         if request.data["signal"][0] == "1":
-            self.SIGNAL = True
+            SIGNAL.status = True
+            SIGNAL.save()
         else:
-            self.SIGNAL = False
-        print(self.SIGNAL)
+            SIGNAL.status = False
+            SIGNAL.save()
+        print(SIGNAL.status)
         return Response(status=200)
 
 
