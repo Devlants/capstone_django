@@ -13,9 +13,9 @@ from django.utils.decorators import method_decorator
 
 class MenuListView(APIView):
     def get(self,request):
-        menues = Menu.objects.filter(category_1__id__gte = '3')
-        data = MenuEasySerializer(menues,many=True).data
-        return Response(status = 200,data = data)
+        categories = Category1.objects.filter(id__gte = '3')
+        datas = MenuCateSerializer(categories,many=True).data
+        return Response(status = 200,data = datas)
 
 class MenuEasyListView(ListAPIView):
     serializer_class = MenuEasySerializer
