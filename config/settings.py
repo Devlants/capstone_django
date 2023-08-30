@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-KIOSK_HOST = "http://15.164.232.208/"
+KIOSK_HOST = "http://15.164.232.208"
 APP_HOST = "http://3.36.95.105/"
 # Application definition
 

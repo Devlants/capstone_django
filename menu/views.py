@@ -13,7 +13,7 @@ from django.utils.decorators import method_decorator
 
 class MenuListView(APIView):
     def get(self,request):
-        menues = Category1.objects.filter(id__gte = '3')
+        menues = Menu.objects.filter(category_1__id__gte = '3')
         data = MenuEasySerializer(menues,many=True).data
         return Response(status = 200,data = data)
 

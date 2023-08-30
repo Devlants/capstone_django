@@ -10,7 +10,9 @@ class MenuEasySerializer(serializers.ModelSerializer):
         fields = ["id","image","name","price"]
 
     def get_image(self,obj):
-        return settings.KIOSK_HOST + obj.image.url
+        print(obj.image)
+        print(settings.KIOSK_HOST)
+        return settings.KIOSK_HOST + str(obj.image)
 
 class MenuCateSerializer(serializers.ModelSerializer):
     menues = MenuEasySerializer(many=True)
