@@ -11,13 +11,11 @@ from category.models import Category1, Category2
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
-class MenuListView(ListAPIView):
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-       return super(MenuListView, self).dispatch(request, *args, **kwargs)
-
-    queryset = Category1.objects.filter(id__gte = '3')
-    serializer_class = MenuCateSerializer
+class MenuListView(APIView):
+    def get(self,request):
+        menues = Category1.objects.filter(id__gte = '3')
+        data = MenuEasySerializer(menues,many=True).data
+        return Response(status = 200,data = data)
 
 class MenuEasyListView(ListAPIView):
     serializer_class = MenuEasySerializer
