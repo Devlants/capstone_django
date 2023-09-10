@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-KIOSK_HOST = "http://15.164.232.208"
+KIOSK_HOST = "https://www.okdkkiosk.shop"
 APP_HOST = "https://www.okdkbackend.shop/"
 # Application definition
 
