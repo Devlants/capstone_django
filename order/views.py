@@ -35,6 +35,7 @@ def OrderCreateView(request):
                 "Authorization" : access_token
             }
             user = requests.get(api+"account/user/",headers=header).json()['user']["id"]
+            print(user)
             card_data = requests.get(api+"account/user/default/card/",headers=header)
             if card_data.status_code == 200:
                 card_data = card_data.json()
