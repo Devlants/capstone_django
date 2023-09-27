@@ -1,3 +1,5 @@
+import time
+
 from django.shortcuts import render
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny
@@ -13,6 +15,7 @@ class SignalAPIView(APIView):
     def get(self,request):
         SIGNAL = Signal.objects.get(id = "1")
         print(SIGNAL.status)
+        time.sleep(3)
         return Response(SIGNAL.status)
 
     def post(self,request):
