@@ -15,7 +15,6 @@ class SignalAPIView(APIView):
     def get(self,request):
         SIGNAL = Signal.objects.get(id = "1")
         print(SIGNAL.status)
-        time.sleep(3)
         return Response(SIGNAL.status)
 
     def post(self,request):
