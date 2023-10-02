@@ -7,7 +7,7 @@ class Order(models.Model):
     is_pack = models.CharField(max_length=10)
     card_com = models.CharField(max_length=100,null = True)
     card_num = models.CharField(max_length=100,null = True)
-    user = models.CharField(max_length=100)
+    user = models.CharField(max_length=100,null = True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Temperature(models.Model):

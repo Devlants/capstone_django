@@ -29,6 +29,7 @@ class UserOrderListView(APIView):
 def OrderCreateView(request):
     if request.method == "POST":
         access_token = request.META.get('HTTP_AUTHORIZATION')
+        user = None
         if access_token:
             api = getattr(settings,"APP_HOST")
             header = {
